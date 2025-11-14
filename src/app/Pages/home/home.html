@@ -1,0 +1,8 @@
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 p-7" >
+    <div *ngFor="let m of Moviedata" class="border-2 border-b-blue-500 rounded-3xl flex flex-col items-center p-2 gap-3 bg-orange-100">
+        <img src="https://image.tmdb.org/t/p/original/{{m.poster_path}}" alt="{{m.title}}" class="h-96 w-96">
+
+        <h2 class="text-3xl text-orange-600">{{m.title}}</h2>
+        <p>{{m.overview}}</p>
+    </div>
+</div>
