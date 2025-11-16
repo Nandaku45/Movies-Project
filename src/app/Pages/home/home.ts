@@ -1,21 +1,112 @@
+
+
+
 import { Component } from '@angular/core';
 import { MovieApi } from '../../movie-api';
+
 @Component({
   selector: 'app-home',
   standalone: false,
   templateUrl: './home.html',
-styleUrls: ['./home.css']
+  styleUrls: ['./home.css']
 })
 export class Home {
-  Moviedata:any[]=[]
-constructor(private m:MovieApi){
+  Moviedata: any[] = [];
+  genere= [
+    {
+      "id": 28,
+      "name": "Action"
+    },
+    {
+      "id": 12,
+      "name": "Abenteuer"
+    },
+    {
+      "id": 16,
+      "name": "Animation"
+    },
+    {
+      "id": 35,
+      "name": "Komödie"
+    },
+    {
+      "id": 80,
+      "name": "Krimi"
+    },
+    {
+      "id": 99,
+      "name": "Dokumentarfilm"
+    },
+    {
+      "id": 18,
+      "name": "Drama"
+    },
+    {
+      "id": 10751,
+      "name": "Familie"
+    },
+    {
+      "id": 14,
+      "name": "Fantasy"
+    },
+    {
+      "id": 36,
+      "name": "Historie"
+    },
+    {
+      "id": 27,
+      "name": "Horror"
+    },
+    {
+      "id": 10402,
+      "name": "Musik"
+    },
+    {
+      "id": 9648,
+      "name": "Mystery"
+    },
+    {
+      "id": 10749,
+      "name": "Liebesfilm"
+    },
+    {
+      "id": 878,
+      "name": "Science Fiction"
+    },
+    {
+      "id": 10770,
+      "name": "TV-Film"
+    },
+    {
+      "id": 53,
+      "name": "Thriller"
+    },
+    {
+      "id": 10752,
+      "name": "Kriegsfilm"
+    },
+    {
+      "id": 37,
+      "name": "Western"
+    }
+  ]
 
-}
 
-ngOnInit(){
-  this.m.getData().subscribe((s:any)=>{
-    console.log(s.results);
-    this.Moviedata=s.results;
-  })
-}
+  constructor(public m: MovieApi) { }
+
+  ngOnInit() {
+    this.m.getData().subscribe((s: any) => {
+      console.log(s.results);
+      this.Moviedata = s.results;
+    });
+  }
+  Moviescategory(e:any){
+    console.log(e?.target.value);
+    this.m.categoryMovies(e?.target.value).subscribe((s:any)=>{
+      this.Moviedata=s.results;
+      console.log(this.Moviedata[0].title,s.results)
+    })
+  }
+
+  
 }

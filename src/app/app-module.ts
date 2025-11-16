@@ -10,13 +10,16 @@ import { Contact } from './Pages/contact/contact';
 // @Injectable({ providedIn: 'app' })
 
 import { HttpClientModule } from '@angular/common/http';
+import { Movie } from './movie/movie';
 @NgModule({
   declarations: [
     App,
     Header,
     Footer,
     Home,
-    Contact
+    Contact,
+    Movie,
+    
   ],
   imports: [
     BrowserModule,
