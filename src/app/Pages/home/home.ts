@@ -1,7 +1,7 @@
 
 
 
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { MovieApi } from '../../movie-api';
 
 @Component({
@@ -92,18 +92,20 @@ export class Home {
   ]
 
 
-  constructor(public m: MovieApi) { }
+  constructor(public m: MovieApi,private cd:ChangeDetectorRef) { }
 
   ngOnInit() {
     this.m.getData().subscribe((s: any) => {
-      console.log(s.results);
+      console.log(s);
       this.Moviedata = s.results;
+      this.cd.detectChanges();
     });
   }
   Moviescategory(e:any){
     console.log(e?.target.value);
     this.m.categoryMovies(e?.target.value).subscribe((s:any)=>{
       this.Moviedata=s.results;
+      this.cd.detectChanges();
       console.log(this.Moviedata[0].title,s.results)
     })
   }
