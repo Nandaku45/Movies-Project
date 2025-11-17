@@ -3,7 +3,6 @@
 
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { MovieApi } from '../../movie-api';
-
 @Component({
   selector: 'app-home',
   standalone: false,
@@ -12,6 +11,11 @@ import { MovieApi } from '../../movie-api';
 })
 export class Home {
   Moviedata: any[] = [];
+  Overview_length:any=500;
+  searchedMovie:string="";
+  SearchedMovieResults:any[]=[];
+  category_search=true;
+  // overview:string;
   genere= [
     {
       "id": 28,
@@ -107,6 +111,16 @@ export class Home {
       this.Moviedata=s.results;
       this.cd.detectChanges();
       console.log(this.Moviedata[0].title,s.results)
+    })
+  }
+
+  SearchMovie(){
+    this.category_search=false;
+    this.m.searchMovie(this.searchedMovie).subscribe((s:any)=>{
+      console.log(s);
+      this.SearchedMovieResults=s.results;
+      // console.log(this.Moviedata[0])
+      this.cd.detectChanges();
     })
   }
 

@@ -8,7 +8,7 @@ import { Footer } from './Components/footer/footer';
 import { Home } from './Pages/home/home';
 import { Contact } from './Pages/contact/contact';
 // @Injectable({ providedIn: 'app' })
-
+import { FormsModule } from '@angular/forms';   
 import { HttpClientModule } from '@angular/common/http';
 import { Movie } from './movie/movie';
 @NgModule({
@@ -24,7 +24,8 @@ import { Movie } from './movie/movie';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [
     provideBrowserGlobalErrorListeners(),

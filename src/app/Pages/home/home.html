@@ -1,19 +1,64 @@
-<h2>Choose Category</h2>
+<div *ngIf="category_search" class="flex flex-col md:flex-row justify-between px-3">
+ <div>
+   <h2>Choose Category</h2>
 <select (change)="Moviescategory($event)" name="" id="">
     <option *ngFor="let g of genere" value="{{g.id}}">{{g.name}}</option>
 </select>
-    <p>Movie count: {{Moviedata.length}}</p>
+ </div>
 
-<div *ngIf="Moviedata.length > 0" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center px-6">
-  <div *ngFor="let m of Moviedata" class="border-2 shadow-2xl shadow-green-700 border-b-blue-500 rounded-3xl flex flex-col items-center p-2 gap-3 bg-white hover:scale-105 transition-all ease-in duration-200">
-   <a routerLink="/movie/{{m.id}}">
-     <img src="https://image.tmdb.org/t/p/original/{{m.poster_path}}" alt="{{m.title}}" class="h-72 w-80">
-    <h2 class="text-3xl text-orange-600">{{m.title}}</h2>
-    <p>{{m.overview}}</p>
-    <!-- <h2>Movie count: {{Moviedata.length}}</h2> -->
-    
+<div class="flex flex-col md:flex-row gap-0 md:gap-2 m-2">
+  <input class="text-2xl border-2 border-red-600 rounded-3xl text-center" 
+       placeholder="Search Movie"  
+       [(ngModel)]="searchedMovie">
 
-   </a>
+<button class="border-2 border-blue-700 text-white rounded-2xl p-2" 
+        (click)="SearchMovie()">Search</button>
+</div>
+</div>
+
+
+<!-- NORMAL MOVIES LIST -->
+<div *ngIf="searchedMovie.length === 0"
+     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center px-6">
+
+  <div *ngFor="let m of Moviedata"
+       class="border-2 shadow-2xl shadow-green-700 border-b-blue-500 rounded-3xl flex flex-col items-center p-2 gap-3 bg-white hover:scale-105 transition-all ease-in duration-200">
+
+    <a [routerLink]="['/movie', m.id]">
+
+      <img [src]="'https://image.tmdb.org/t/p/original/' + m.poster_path"
+           [alt]="m.title"
+           class="h-72 w-80">
+
+      <h2 class="text-3xl text-orange-600">{{ m.title }}</h2>
+
+      <p>{{ m.overview | slice: 0:200 }}
+          <span *ngIf="m.overview.length > 200" class="text-blue-600">...More</span>
+      </p>
+
+    </a>
+
   </div>
 </div>
+
+
+<!-- SEARCH RESULT MOVIES LIST -->
+
+<div *ngIf="searchedMovie.length > 0"
+     class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 justify-items-center px-6 m-2">
+
+  <div 
+       class="border-2 shadow-2xl shadow-green-700 border-b-blue-500 rounded-3xl flex flex-col items-center p-2 gap-3 bg-white">
+
+    <a [routerLink]="['/movie', SearchedMovieResults[0].id]">
+      <img [src]="'https://image.tmdb.org/t/p/original/' + SearchedMovieResults[0].poster_path"
+           [alt]="SearchedMovieResults[0].title"
+           class="h-72 w-80">
+      <h2 class="text-3xl text-orange-600">{{ SearchedMovieResults[0].title }}</h2>
+    </a>
+
+  </div>
+</div>
+
+
 
