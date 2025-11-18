@@ -21,11 +21,20 @@ categoryMovies(g:number){
 }
 
 getSingleMovie(id:number){
-  return this.ht.get(`https://api.themoviedb.org/3/movie/${id}?api_key=a23b2cea72fe75381083061b1261e9f5`)
+  // return this.ht.get(`https://api.themoviedb.org/3/movie/${id}?api_key=a23b2cea72fe75381083061b1261e9f5`)
+    return this.ht.get(`https://api.themoviedb.org/3/movie/${id}?api_key=626568137407cf4746600dc9c258810a`)
+
+
 }
 
 searchMovie(s:any){
   return this.ht.get(`https://api.themoviedb.org/3/search/movie?query=${s}&api_key=626568137407cf4746600dc9c258810a`)
+}
+
+VideoData(id:number){
+  // return this.ht.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=626568137407cf4746600dc9c258810a&language=en-US`);
+
+return this.ht.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=626568137407cf4746600dc9c258810a&language=en-US`)
 }
  
 }

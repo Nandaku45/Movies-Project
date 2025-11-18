@@ -11,6 +11,8 @@ import { Contact } from './Pages/contact/contact';
 import { FormsModule } from '@angular/forms';   
 import { HttpClientModule } from '@angular/common/http';
 import { Movie } from './movie/movie';
+import { SafeUrl } from '@angular/platform-browser';
+import { SafeUrlPipe } from './safe-url-pipe';
 @NgModule({
   declarations: [
     App,
@@ -19,7 +21,8 @@ import { Movie } from './movie/movie';
     Home,
     Contact,
     Movie,
-    
+    Footer,
+    SafeUrlPipe    
   ],
   imports: [
     BrowserModule,
