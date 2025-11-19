@@ -13,6 +13,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { Movie } from './movie/movie';
 import { SafeUrl } from '@angular/platform-browser';
 import { SafeUrlPipe } from './safe-url-pipe';
+import { WatchList } from './watch-list/watch-list';
 @NgModule({
   declarations: [
     App,
@@ -22,7 +23,8 @@ import { SafeUrlPipe } from './safe-url-pipe';
     Contact,
     Movie,
     Footer,
-    SafeUrlPipe    
+    SafeUrlPipe,
+    WatchList    
   ],
   imports: [
     BrowserModule,

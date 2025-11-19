@@ -4,6 +4,7 @@ import { Home } from './Pages/home/home';
 import { Contact } from './Pages/contact/contact';
 import { Movie } from './movie/movie';
 import { checkoutGuard } from './checkout-guard';
+import { WatchList } from './watch-list/watch-list';
 // const routes: Routes = [
 //   {path:'',component:Home},
 //   {path:'contact',component:Contact} ,
@@ -16,6 +17,7 @@ const routes: Routes = [
   { path: 'home', component: Home },
   { path: 'contact', component: Contact },
     {path:'movie/:id',component:Movie},
+    {path:'WatchList',component:WatchList},
 
   { path: '**', redirectTo: 'home' }
 ];

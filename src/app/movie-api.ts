@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class MovieApi {
 overview?:string='';
+MovieWatchList:any[]=[]
   constructor(public ht:HttpClient){
 
   }
@@ -36,5 +37,18 @@ VideoData(id:number){
 
 return this.ht.get(`https://api.themoviedb.org/3/movie/${id}/videos?api_key=626568137407cf4746600dc9c258810a&language=en-US`)
 }
+MovieAddList(Movie:any){
+  const exist=this.MovieWatchList.some((e)=>e.id===Movie.id)
+  if(!exist){
+  this.MovieWatchList.push(Movie)
+
+  }
+}
+
+WatchList(){
+  return this.MovieWatchList;
+}
+
+
  
 }

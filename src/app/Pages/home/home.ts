@@ -15,6 +15,7 @@ export class Home {
   searchedMovie:string="";
   SearchedMovieResults:any[]=[];
   category_search=true;
+  MovieWatchList:string='Add To WatchList';
   // overview:string;
   genere= [
     {
@@ -123,6 +124,18 @@ export class Home {
       this.cd.detectChanges();
     })
   }
+  Watchlist(movie:any){
 
+this.MovieWatchList=(this.MovieWatchList==='Add To WatchList')?'Movie Added':'Add To WatchList'
+if(this.MovieWatchList==='Add To WatchList'){
+  alert('Movie removed from WatchList')
+}
+else{
+  alert('Movie Added to Your WatchList');
+}
+
+this.m.MovieAddList(movie)
+
+  }
   
 }
