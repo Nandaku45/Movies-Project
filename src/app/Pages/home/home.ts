@@ -109,15 +109,15 @@ export class Home {
     console.log(e?.target.value);
     this.m.categoryMovies(e?.target.value).subscribe((s:any)=>{
       this.Moviedata=s.results;
-      this.cd.detectChanges();
       console.log(this.Moviedata[0].title,s.results)
+      this.cd.detectChanges();
     })
   }
 
   SearchMovie(){
     this.category_search=false;
     this.m.searchMovie(this.searchedMovie).subscribe((s:any)=>{
-      console.log(s);
+      console.log(s.results);
       this.SearchedMovieResults=s.results;
       // console.log(this.Moviedata[0])
       this.cd.detectChanges();
