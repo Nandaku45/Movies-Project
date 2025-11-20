@@ -103,6 +103,9 @@ export class Home {
     this.m.getData().subscribe((s: any) => {
       console.log(s);
       this.Moviedata = s.results;
+      this.Moviedata.forEach((e)=>{
+        e.buttontext=this.m.isMovieExists(e.id)?"Movie Added":"Add to watchlist"
+      });
       this.cd.detectChanges();
     });
   }
@@ -126,15 +129,14 @@ export class Home {
   }
   Watchlist(movie:any){
 
-this.MovieWatchList=(this.MovieWatchList==='Add To WatchList')?'Movie Added':'Add To WatchList'
-if(this.MovieWatchList==='Add To WatchList'){
-  alert('Movie removed from WatchList')
+if(!this.m.isMovieExists(movie)){
+  this.m.MovieAddList(movie);
+  movie.buttontext="Movie added";
+  alert('movie added to your watchlist');
 }
 else{
-  alert('Movie Added to Your WatchList');
+  alert('movie already exists');
 }
-
-this.m.MovieAddList(movie)
 
   }
   
