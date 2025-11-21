@@ -7,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrl: './contact.css',
 })
 export class Contact {
-
+message='message.png';
+logo='Nanda.jpg'
+validations(v:any){
+  console.log(v);
+}
 }
