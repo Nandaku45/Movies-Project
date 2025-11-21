@@ -1,6 +1,3 @@
-
-
-
 import { ChangeDetectorRef, Component } from '@angular/core';
 import { MovieApi } from '../../movie-api';
 @Component({
