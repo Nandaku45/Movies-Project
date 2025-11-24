@@ -12,4 +12,9 @@ logo='Nanda.jpg'
 validations(v:any){
   console.log(v);
 }
+SubmitForm(form:any){
+  console.log(form.value)
+  form.reset();
+  alert('You have successfully submitted the form');
+}
 }

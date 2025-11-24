@@ -131,7 +131,7 @@ if(!this.m.isMovieExists(movie)){
   movie.buttontext="Movie added";
   alert('movie added to your watchlist');
 }
-else{
+if(this.m.isMovieExists(movie)){
   alert('movie already exists');
 }
 

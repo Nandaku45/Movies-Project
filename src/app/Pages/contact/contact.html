@@ -1,53 +1,50 @@
-<section  class="bg-gray-300 pt-1    
-            ">
-            <div class="flex flex-col border-2 rounded-4xl border-white bg-white
-            container p-4">
-    <h3 class="text-6xl">Get in Touch</h3>
-    <div class="flex flex-col md:flex-row gap-3 p-3">
-        <div class="border-2 border-gray-100 flex flex-col h-full  rounded-4xl w-full items-center gap-3 p-3">
-            <i class="bi bi-envelope text-blue-400 text-7xl"></i>
-            <a href="mailto:nandars905260@gmail.com" class="text-3xl text-decoration-none">Hi@gmail.com</a>
 
-        </div>
-        <div class="border-2 border-gray-100 flex flex-col h-full rounded-4xl  w-full items-center gap-3 p-3">
-            <i class="bi bi-whatsapp text-blue-400 text-7xl"></i>
-            <a href="https://wa.me/919618869787" target="_blank" class="text-3xl text-decoration-none">Chat on Whatsapp</a>
-        </div>
-        
-    </div>
-    <p class="text-3xl mx-4">Fill the Form</p>
-    <form>
-        <div class="border-2 flex flex-col text-xl rounded-4xl border-gray-200  gap-3 pr-10 my-2 py-5 pl-4  pt-8  justify-center items-center w-full container">
-               <div class="flex flex-col md:flex-row gap-8 p-8 w-full">
-        
-         <input type="text" placeholder="Your Name*" class="border-2 border-b-blue-400 rounded-3xl w-full p-6 h-20" required #name="ngModel" ngModel name="name">
-     
-        <input type="text" placeholder="Your E-Mail*" class="border-2 border-b-blue-400 rounded-3xl h-20 w-full p-6" required #email="ngModel" ngModel name="email" minlength="6">
-            
-       </div>
-       <div *ngIf="name.touched && name?.errors?.['required'] && name?.errors?.['minlength']" class="text-red-600 text-left">
-            <p>Enter the value  in name field without leaving empty</p>
-         </div>
-         <div *ngIf="name.valid && email.touched && email?.errors?.['required']" class="text-red-600 text-left">
-            <p>Enter the value  in email field without leaving empty</p>
-         </div>
-<div class="px-8 w-full flex flex-col">
-       <input type="text" class="border-2 border-b-blue-400 rounded-3xl w-full h-20 p-6" placeholder="Subject*" required #subject="ngModel" ngModel name="subject">
-        <div *ngIf="name.valid && email.valid && subject.touched && subject?.errors?.['required']">
-            <p class="text-red-500">Subject filed should not left empty</p>
-        </div>
-</div>
 
-<div class="px-8 w-full">
-        <input class="rounded-3xl  pt-2 pl-8 w-full border-2 border-b-blue-400 h-32" placeholder="Your Message*" required #msg="ngModel" ngModel name="message">
-<div *ngIf="name.valid && email.valid && subject.valid && msg?.errors?.['required'] && msg.touched">
-            <p class="text-red-500">Subject filed should not left empty</p>
-        </div>
-</div>
-     <input type="submit" class="bg-blue-400 text-white fs-2 p-3 rounded-4 hover:bg-blue-600 animate-pulse" (click)="validations(name)" value="submit">
 
+<form #MyForm="ngForm" (ngSubmit)="SubmitForm(MyForm)">
+  <div class="border-2 flex flex-col text-xl rounded-4xl border-gray-200 gap-3 pr-10 my-2 py-5 pl-4 pt-8 justify-center items-center w-full container">
+
+    <div class="flex flex-col md:flex-row gap-8 p-8 w-full">
+
+      <input type="text" placeholder="Your Name*" class="border-2 border-b-blue-400 rounded-3xl w-full p-6 h-20"
+             required #name="ngModel" ngModel name="name" minlength="4">
+
+      <input type="text" placeholder="Your E-Mail*" class="border-2 border-b-blue-400 rounded-3xl h-20 w-full p-6"
+             required #email="ngModel" ngModel name="email" minlength="6">
     </div>
-    </form>
-    
+
+    <div *ngIf="name.touched && name.invalid" class="text-red-600 text-left">
+      <p *ngIf="name.errors?.['required']">Enter the value in name field without leaving empty</p>
+      <p *ngIf="name.errors?.['minlength']">Name must be 4 characters long</p>
     </div>
-</section>
+
+    <div *ngIf="email.touched && email.invalid" class="text-red-600 text-left">
+      <p *ngIf="email.errors?.['required']">Email is required</p>
+      <p *ngIf="email.errors?.['minlength']">Email must be 6 characters long</p>
+    </div>
+
+    <!-- Subject -->
+    <div class="px-8 w-full flex flex-col">
+      <input type="text" class="border-2 border-b-blue-400 rounded-3xl w-full h-20 p-6"
+             placeholder="Subject*" required #subject="ngModel" ngModel name="subject">
+
+      <div *ngIf="subject.touched && subject.invalid">
+        <p class="text-red-500">Enter the subject without leaving empty</p>
+      </div>
+    </div>
+
+    <!-- Message -->
+    <div class="px-8 w-full">
+      <input class="rounded-3xl pt-2 pl-8 w-full border-2 border-b-blue-400 h-32"
+             placeholder="Your Message*" required #msg="ngModel" ngModel name="message">
+
+      <div *ngIf="msg.touched && msg.invalid">
+        <p class="text-red-500">Message cannot be empty</p>
+      </div>
+    </div>
+
+    <input type="submit" class="bg-blue-400 text-white  text-4xl p-2 rounded-3xl hover:bg-blue-600 animate-pulse"
+           value="Submit">
+
+  </div>
+</form>
